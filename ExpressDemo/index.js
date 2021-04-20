@@ -1,7 +1,6 @@
 const startupDebuger = require('debug')('app:startup');
 const dbDebuger = require('debug')('app:db');
 const express = require('express');
-const Joi = require('joi');
 const logger = require('./middleware/logger');
 const authenticate = require('./middleware/authenticate');
 const helmet = require('helmet');
