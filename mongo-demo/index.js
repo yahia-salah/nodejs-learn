@@ -6,11 +6,41 @@ mongoose
   .catch((err) => console.log("Error", err.message));
 
 const courseSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    minlength: 5,
+    maxlenght: 255,
+    trim: true,
+    //match: /regex/,
+  },
+  category: {
+    type: String,
+    lowercase: true,
+    enum: ["web", "mobile", "network"],
+  },
   author: String,
-  tags: [String],
+  tags: {
+    type: [String],
+    validate: {
+      validator: function (v) {
+        return v && v.length > 0;
+      },
+      message: "A course should have at least one tag",
+    },
+  },
   date: { type: Date, default: Date.now },
   isPublished: Boolean,
+  price: {
+    type: Number,
+    min: 10,
+    max: 200,
+    get: (v) => Math.round(v),
+    set: (v) => Math.round(v),
+    required: function () {
+      return this.isPublished;
+    },
+  },
 });
 
 const Course = mongoose.model("Course", courseSchema);
@@ -18,9 +48,11 @@ const Course = mongoose.model("Course", courseSchema);
 async function createCourse() {
   const course = new Course({
     name: "Node.js Course",
+    category: "web",
     author: "Mosh",
     tags: ["node", "backend"],
     isPublished: false,
+    price: 15,
   });
   const result = await course.save();
   console.log("Result", result);
@@ -91,9 +123,9 @@ async function getCourses(author, isPublished) {
 // .find({author:/Hamadani$/}) -> like '%Hamadani'
 // .find({author:/.*Mosh.*/}) -> like '%Mosh%'
 
-// createCourse();
+createCourse();
 // getCourses();
 // getCourses("Mosh", false);
 // updateCourseWithQuery("607efbe05223ff489c79fd25");
 // updateCourseWithoutQuery("607efbe05223ff489c79fd25");
-removeCourse("607efbe05223ff489c79fd25");
+// removeCourse("607efbe05223ff489c79fd25");
