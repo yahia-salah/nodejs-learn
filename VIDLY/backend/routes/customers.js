@@ -1,6 +1,7 @@
 const express = require("express");
 const { Customer, validate } = require("./../models/customer");
 const router = express.Router();
+const mongoose = require("mongoose");
 
 router.get("/", async (req, res) => {
   const customers = await Customer.find().sort({ name: 1 });
@@ -8,6 +9,9 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid customerId");
+
   const customer = await Customer.findById(req.params.id);
 
   if (customer) {
@@ -22,17 +26,20 @@ router.post("/", async (req, res) => {
     res.status(400).send(errorMessages);
     return;
   }
-  let customer = new Customer({
+  const customer = new Customer({
     name: req.body.name,
     isGold: req.body.isGold,
     phone: req.body.phone,
   });
-  customer = await customer.save();
+  await customer.save();
   res.setHeader("Content-Type", "application/json");
   res.send(customer);
 });
 
 router.put("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid customerId");
+
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
@@ -55,6 +62,9 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid customerId");
+
   const customer = await Customer.findByIdAndRemove(req.params.id);
 
   if (!customer) {

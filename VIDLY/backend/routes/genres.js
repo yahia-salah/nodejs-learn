@@ -1,6 +1,7 @@
 const express = require("express");
 const { Genre, validate } = require("./../models/genre");
 const router = express.Router();
+const mongoose = require("mongoose");
 
 router.get("/", async (req, res) => {
   const genres = await Genre.find().sort({ name: 1 });
@@ -8,6 +9,9 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid genreId");
+
   const genre = await Genre.findById(req.params.id);
 
   if (genre) {
@@ -22,15 +26,18 @@ router.post("/", async (req, res) => {
     res.status(400).send(errorMessages);
     return;
   }
-  let genre = new Genre({
+  const genre = new Genre({
     name: req.body.name,
   });
-  genre = await genre.save();
+  await genre.save();
   res.setHeader("Content-Type", "application/json");
   res.send(genre);
 });
 
 router.put("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid genreId");
+
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
@@ -53,6 +60,9 @@ router.put("/:id", async (req, res) => {
 });
 
 router.delete("/:id", async (req, res) => {
+  if (!mongoose.Types.ObjectId.isValid(req.params.id))
+    return res.status(400).send("Invalid genreId");
+
   const genre = await Genre.findByIdAndRemove(req.params.id);
 
   if (!genre) {
