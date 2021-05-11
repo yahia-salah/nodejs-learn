@@ -7,16 +7,29 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const morgan = require("morgan");
 const config = require("config");
-const genres = require("./routes/genres");
-const customers = require("./routes/customers");
-const movies = require("./routes/movies");
-const rentals = require("./routes/rentals");
-const home = require("./routes/home");
+const genres = require("./backend/routes/genres");
+const customers = require("./backend/routes/customers");
+const movies = require("./backend/routes/movies");
+const rentals = require("./backend/routes/rentals");
+const users = require("./backend/routes/users");
+const auth = require("./backend/routes/auth");
+const home = require("./backend/routes/home");
 const app = express();
+
+// Check if config is defined
+if (!config.get("jwtSecret")) {
+  // $env:vidly_jwtSecret="jwtSecret123" in PS, set vidly_jwtSecret=jwtSecret123 in CMD
+  console.error("FATAL ERROR: jwtSecret is not defined.");
+  process.exit(1);
+}
 
 // Database code
 mongoose
-  .connect("mongodb://localhost/vidly")
+  .connect("mongodb://localhost/vidly", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => console.log("Connected to MongoDB..."))
   .catch((err) => console.error("Can't connect to MongoDB", err.message));
 
@@ -36,6 +49,8 @@ app.use("/api/genres", genres);
 app.use("/api/customers", customers);
 app.use("/api/movies", movies);
 app.use("/api/rentals", rentals);
+app.use("/api/users", users);
+app.use("/api/auth", auth);
 app.use("/", home);
 
 const port = process.env.PORT || 3000;

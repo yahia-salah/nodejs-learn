@@ -5,6 +5,7 @@ const { Movie } = require("../models/movie");
 const router = express.Router();
 const mongoose = require("mongoose");
 const Fawn = require("fawn");
+const auth = require("../middleware/auth");
 
 Fawn.init(mongoose);
 
@@ -26,7 +27,7 @@ router.get("/:id", async (req, res) => {
   } else res.status(404).send("Rental not found!");
 });
 
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
