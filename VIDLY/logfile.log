@@ -1,0 +1,73 @@
+{"message":"connect ECONNREFUSED 127.0.0.1:27017 connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":9},"level":"error","stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at Function.Model.$wrapCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\model.js:4858:32)\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4449:21\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n    at Promise._execute (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\debuggability.js:300:9)\n    at Promise._resolveFromExecutor (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:483:18)\n    at new Promise (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:79:10)\n    at promiseOrCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n    at model.Query.exec (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4448:10)\n    at model.Query.Query.then (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4531:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","timestamp":"2021-05-12T01:33:27.262Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T01:44:12.127Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T01:47:00.845Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T01:47:48.148Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:13:02.854Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:14:03.146Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:14:26.284Z"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017 connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":9},"level":"error","stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at Function.Model.$wrapCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\model.js:4858:32)\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4449:21\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n    at Promise._execute (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\debuggability.js:300:9)\n    at Promise._resolveFromExecutor (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:483:18)\n    at new Promise (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:79:10)\n    at promiseOrCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n    at model.Query.exec (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4448:10)\n    at model.Query.Query.then (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4531:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","timestamp":"2021-05-12T02:14:56.305Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:17:00.461Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:17:21.141Z"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017 connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":9},"level":"error","stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at Function.Model.$wrapCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\model.js:4858:32)\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4449:21\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n    at Promise._execute (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\debuggability.js:300:9)\n    at Promise._resolveFromExecutor (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:483:18)\n    at new Promise (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:79:10)\n    at promiseOrCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n    at model.Query.exec (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4448:10)\n    at model.Query.Query.then (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4531:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","timestamp":"2021-05-12T02:17:51.155Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:28:41.031Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-12T02:29:08.943Z"}
+{"message":"connect ECONNREFUSED 127.0.0.1:27017 connect ECONNREFUSED 127.0.0.1:27017","reason":{"type":"Single","setName":null,"maxSetVersion":null,"maxElectionId":null,"servers":{},"stale":false,"compatible":true,"compatibilityError":null,"logicalSessionTimeoutMinutes":null,"heartbeatFrequencyMS":10000,"localThresholdMS":15,"commonWireVersion":9},"level":"error","stack":"MongooseServerSelectionError: connect ECONNREFUSED 127.0.0.1:27017\n    at Function.Model.$wrapCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\model.js:4858:32)\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4449:21\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:31:5\n    at Promise._execute (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\debuggability.js:300:9)\n    at Promise._resolveFromExecutor (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:483:18)\n    at new Promise (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\fawn\\node_modules\\bluebird\\js\\release\\promise.js:79:10)\n    at promiseOrCallback (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\helpers\\promiseOrCallback.js:30:10)\n    at model.Query.exec (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4448:10)\n    at model.Query.Query.then (C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\node_modules\\mongoose\\lib\\query.js:4531:15)\n    at processTicksAndRejections (internal/process/task_queues.js:93:5)","timestamp":"2021-05-12T02:29:38.952Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:12:30.492Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:12:58.322Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:15:45.839Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:20:01.861Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:20:01.930Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:21:02.870Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:21:02.987Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:21:18.049Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:21:18.199Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:21:32.786Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:21:32.856Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:25:29.917Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:25:30.013Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:25:38.814Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:25:38.904Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:27:12.771Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:27:12.852Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:27:50.162Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:27:50.237Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:28:08.070Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:28:08.157Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:34:43.839Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:34:43.930Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:35:20.134Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:36:37.938Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:39:52.788Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:40:20.918Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:40:54.559Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:42:46.318Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:42:53.008Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:43:27.988Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:43:28.044Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:45:48.854Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:49:52.662Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:50:12.439Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:51:42.526Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:51:42.667Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:52:04.786Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:52:04.923Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:52:13.206Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:52:13.342Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:53:19.108Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:53:19.257Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:53:47.013Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:53:47.062Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-16T12:53:52.107Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T12:55:44.375Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T12:55:44.437Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-16T12:55:45.278Z"}
+{"level":"error","message":"Can't get movies Can't get movies","stack":"Error: Can't get movies\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\backend\\routes\\movies.js:11:9","timestamp":"2021-05-16T12:55:45.312Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T13:00:18.444Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T13:00:18.531Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-16T13:00:21.796Z"}
+{"level":"error","message":"Can't get movies_middleware Can't get movies","stack":"Error: Can't get movies\n    at C:\\git\\nodejs-learn\\nodejs-learn\\VIDLY\\backend\\routes\\movies.js:11:9","timestamp":"2021-05-16T13:00:21.832Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T13:00:52.712Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T13:00:52.774Z"}
+{"message":"Listening on port 3000...","level":"info","timestamp":"2021-05-16T13:01:20.294Z"}
+{"message":"Connected to MongoDB...","level":"info","timestamp":"2021-05-16T13:01:20.427Z"}
+{"message":"/api/movies","level":"info","timestamp":"2021-05-16T13:03:30.658Z"}
