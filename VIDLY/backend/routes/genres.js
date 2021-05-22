@@ -4,16 +4,14 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
+const validateObjectId = require("../middleware/validateObjectID");
 
 router.get("/", async (req, res) => {
   const genres = await Genre.find().sort({ name: 1 });
   res.send(genres);
 });
 
-router.get("/:id", async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid genreId");
-
+router.get("/:id", validateObjectId, async (req, res) => {
   const genre = await Genre.findById(req.params.id);
 
   if (genre) {
@@ -25,8 +23,7 @@ router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
   const genre = new Genre({
     name: req.body.name,
@@ -36,15 +33,11 @@ router.post("/", auth, async (req, res) => {
   res.send(genre);
 });
 
-router.put("/:id", auth, async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid genreId");
-
+router.put("/:id", [auth, validateObjectId], async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
 
   const genre = await Genre.findByIdAndUpdate(
@@ -54,22 +47,17 @@ router.put("/:id", auth, async (req, res) => {
   );
 
   if (!genre) {
-    res.status(404).send("Genre not found!");
-    return;
+    return res.status(404).send("Genre not found!");
   }
 
   res.send(genre);
 });
 
-router.delete("/:id", [auth, admin], async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid genreId");
-
+router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const genre = await Genre.findByIdAndRemove(req.params.id);
 
   if (!genre) {
-    res.status(404).send("Genre not found!");
-    return;
+    return res.status(404).send("Genre not found!");
   }
 
   res.send(genre);

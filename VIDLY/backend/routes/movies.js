@@ -5,16 +5,14 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
+const validateObjectId = require("../middleware/validateObjectID");
 
 router.get("/", async (req, res) => {
   const movies = await Movie.find().sort({ title: 1 });
   res.send(movies);
 });
 
-router.get("/:id", async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid movieId");
-
+router.get("/:id", validateObjectId, async (req, res) => {
   const movie = await Movie.findById(req.params.id);
 
   if (movie) {
@@ -47,15 +45,11 @@ router.post("/", auth, async (req, res) => {
   res.send(movie);
 });
 
-router.put("/:id", auth, async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid movieId");
-
+router.put("/:id", [auth, validateObjectId], async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
 
   const genre = await Genre.findById(req.body.genreId);
@@ -76,22 +70,17 @@ router.put("/:id", auth, async (req, res) => {
   );
 
   if (!movie) {
-    res.status(404).send("Movie not found!");
-    return;
+    return res.status(404).send("Movie not found!");
   }
 
   res.send(movie);
 });
 
-router.delete("/:id", [auth, admin], async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid movieId");
-
+router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const movie = await Movie.findByIdAndRemove(req.params.id);
 
   if (!movie) {
-    res.status(404).send("Movie not found!");
-    return;
+    return res.status(404).send("Movie not found!");
   }
 
   res.send(movie);

@@ -4,16 +4,14 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
+const validateObjectId = require("../middleware/validateObjectID");
 
 router.get("/", async (req, res) => {
   const customers = await Customer.find().sort({ name: 1 });
   res.send(customers);
 });
 
-router.get("/:id", async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid customerId");
-
+router.get("/:id", validateObjectId, async (req, res) => {
   const customer = await Customer.findById(req.params.id);
 
   if (customer) {
@@ -25,8 +23,7 @@ router.post("/", auth, async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
   const customer = new Customer({
     name: req.body.name,
@@ -38,15 +35,11 @@ router.post("/", auth, async (req, res) => {
   res.send(customer);
 });
 
-router.put("/:id", auth, async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid customerId");
-
+router.put("/:id", [auth, validateObjectId], async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
 
   const customer = await Customer.findByIdAndUpdate(
@@ -56,22 +49,17 @@ router.put("/:id", auth, async (req, res) => {
   );
 
   if (!customer) {
-    res.status(404).send("Customer not found!");
-    return;
+    return res.status(404).send("Customer not found!");
   }
 
   res.send(customer);
 });
 
-router.delete("/:id", [auth, admin], async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid customerId");
-
+router.delete("/:id", [auth, admin, validateObjectId], async (req, res) => {
   const customer = await Customer.findByIdAndRemove(req.params.id);
 
   if (!customer) {
-    res.status(404).send("Customer not found!");
-    return;
+    return res.status(404).send("Customer not found!");
   }
 
   res.send(customer);

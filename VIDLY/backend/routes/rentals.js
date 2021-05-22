@@ -6,6 +6,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Fawn = require("fawn");
 const auth = require("../middleware/auth");
+const validateObjectId = require("../middleware/validateObjectID");
 
 Fawn.init(mongoose);
 
@@ -16,10 +17,7 @@ router.get("/", async (req, res) => {
   res.send(rentals);
 });
 
-router.get("/:id", async (req, res) => {
-  if (!mongoose.Types.ObjectId.isValid(req.params.id))
-    return res.status(400).send("Invalid rentalId");
-
+router.get("/:id", validateObjectId, async (req, res) => {
   const rental = await Rental.findById(req.params.id);
 
   if (rental) {

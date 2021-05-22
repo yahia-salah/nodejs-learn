@@ -15,8 +15,7 @@ router.post("/", async (req, res) => {
   const { error } = validate(req.body);
   if (error) {
     let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
+    return res.status(400).send(errorMessages);
   }
   let user = await User.findOne({ email: req.body.email });
   if (user) return res.status(400).send("Email already used before");
