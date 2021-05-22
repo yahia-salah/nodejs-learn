@@ -41,4 +41,4 @@ function validateRental(rental) {
 }
 
 module.exports.Rental = Rental;
-module.exports.validate = validateRental;
+module.exports.validator = validateRental;

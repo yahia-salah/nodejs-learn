@@ -1,14 +1,12 @@
 const express = require("express");
-const { Rental, validate } = require("../models/rental");
+const { Rental, validator } = require("../models/rental");
 const { Customer } = require("../models/customer");
 const { Movie } = require("../models/movie");
 const router = express.Router();
-const mongoose = require("mongoose");
 const Fawn = require("fawn");
 const auth = require("../middleware/auth");
+const validate = require("../middleware/validate");
 const validateObjectId = require("../middleware/validateObjectID");
-
-Fawn.init(mongoose);
 
 router.get("/", async (req, res) => {
   const rentals = await Rental.find()
@@ -25,14 +23,7 @@ router.get("/:id", validateObjectId, async (req, res) => {
   } else res.status(404).send("Rental not found!");
 });
 
-router.post("/", auth, async (req, res) => {
-  const { error } = validate(req.body);
-  if (error) {
-    let errorMessages = error.details.map((x) => x.message);
-    res.status(400).send(errorMessages);
-    return;
-  }
-
+router.post("/", [auth, validate(validator)], async (req, res) => {
   const customer = await Customer.findById(req.body.customerId);
   if (!customer) return res.status(400).send("Invalid customerId");
 
@@ -52,7 +43,7 @@ router.post("/", auth, async (req, res) => {
   // await movie.save();
   // Transaction of the above 3 lines using Fawn package
   try {
-    new Fawn.Task()
+    await new Fawn.Task()
       .save("rentals", rental)
       .update("movies", { _id: movie._id }, { $inc: { numberInStock: -1 } })
       .run();

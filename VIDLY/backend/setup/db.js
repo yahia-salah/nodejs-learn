@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const logger = require("./../log/logger");
 const config = require("config");
+const Fawn = require("fawn");
 
 // Database code
 module.exports = function () {
@@ -12,4 +13,5 @@ module.exports = function () {
       useCreateIndex: true,
     })
     .then(() => logger.info(`Connected to ${db}...`));
+  Fawn.init(mongoose);
 };
