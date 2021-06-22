@@ -31,7 +31,7 @@ function validateCustomer(customer) {
     isGold: Joi.boolean().required(),
     phone: Joi.string().min(9).max(9).required(),
   });
-  return schema.validate(customer, { abortEarly: false });
+  return schema.validate(customer, { abortEarly: false, allowUnknown: true });
 }
 
 module.exports.Customer = Customer;

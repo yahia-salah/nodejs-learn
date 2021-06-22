@@ -8,7 +8,11 @@ module.exports = function (err, req, res, next) {
   // verbose
   // debug
   // silly
-  logger.error(err.message, err);
+  try {
+    logger.error(err.message, err);
+  } catch (loggerError) {
+    res.status(500).send("Internal Server Error: " + loggerError);
+  }
 
-  res.status(500).send("Something went wrong");
+  res.status(500).send("Internal Server Error: " + err);
 };

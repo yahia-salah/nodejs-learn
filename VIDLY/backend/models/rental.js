@@ -37,7 +37,7 @@ function validateRental(rental) {
     // The other properties are going to be set by the server based on some business logic!!!
     // dateOut, dateReturned, rentalFee
   });
-  return schema.validate(rental, { abortEarly: false });
+  return schema.validate(rental, { abortEarly: false, allowUnknown: true });
 }
 
 module.exports.Rental = Rental;

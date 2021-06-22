@@ -17,7 +17,7 @@ function validateGenre(genre) {
   const schema = Joi.object({
     name: Joi.string().min(5).max(50).required(),
   });
-  return schema.validate(genre, { abortEarly: false });
+  return schema.validate(genre, { abortEarly: false, allowUnknown: true });
 }
 
 module.exports.Genre = Genre;

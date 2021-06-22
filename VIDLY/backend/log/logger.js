@@ -21,14 +21,14 @@ const logger = winston.createLogger({
         winston.format.json()
       ),
     }),
-    new winston.transports.MongoDB({
-      db: "mongodb://localhost/vidly",
-      level: "error",
-      options: {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      },
-    }),
+    // new winston.transports.MongoDB({
+    //   db: "mongodb://localhost/vidly",
+    //   level: "error",
+    //   options: {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //   },
+    // }),
   ],
 });
 

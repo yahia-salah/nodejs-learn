@@ -28,17 +28,24 @@ const Movie = mongoose.model(
       min: 0,
       max: 255,
     },
+    thumbnail: {
+      type: String,
+    },
   })
 );
 
 function validateMovie(movie) {
   const schema = Joi.object({
     title: Joi.string().min(5).max(255).required(),
-    genreId: Joi.objectId().required(),
+    genre: {
+      _id: Joi.objectId().required(),
+      name: Joi.string().required(),
+    },
     numberInStock: Joi.number().required().min(0).max(255),
     dailyRentalRate: Joi.number().required().min(0).max(255),
+    thumbnail: Joi.string().optional(),
   });
-  return schema.validate(movie, { abortEarly: false });
+  return schema.validate(movie, { abortEarly: false, allowUnknown: true });
 }
 
 module.exports.Movie = Movie;

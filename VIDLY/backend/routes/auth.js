@@ -15,7 +15,7 @@ router.post("/", validate(validateAuth), async (req, res) => {
 
   const token = user.generateAuthToken();
 
-  res.send(token);
+  res.send({ token });
 });
 
 function validateAuth(body) {

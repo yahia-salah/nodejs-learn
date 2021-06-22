@@ -33,7 +33,7 @@ const userSchema = new mongoose.Schema({
 });
 userSchema.methods.generateAuthToken = function () {
   const token = jwt.sign(
-    _.pick(this, ["_id", "isAdmin"]),
+    _.pick(this, ["_id", "name", "isAdmin"]),
     config.get("jwtSecret")
   );
   return token;
@@ -54,7 +54,7 @@ function validateUser(user) {
       requirementCount: 4,
     }).required(),
   });
-  return schema.validate(user, { abortEarly: false });
+  return schema.validate(user, { abortEarly: false, allowUnknown: true });
 }
 
 module.exports.User = User;
