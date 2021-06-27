@@ -2,7 +2,14 @@ const logger = require("./backend/log/logger");
 const startupDebuger = require("debug")("app:startup");
 const dbDebuger = require("debug")("app:db");
 const express = require("express");
+const fs = require("fs");
 const app = express();
+
+// folders setup
+if (!fs.existsSync("./backend/uploads"))
+  fs.mkdir("./backend/uploads", () => {
+    logger.info("Created uploads directory!");
+  });
 
 // modules setup
 require("./backend/setup/db")();

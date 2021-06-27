@@ -1,4 +1,5 @@
 {
   "jwtSecret": "",
-  "db": "mongodb://localhost/vidly"
+  "db": "mongodb://localhost/vidly",
+  "uploads-host": "http://localhost:3000/api/uploads/"
 }

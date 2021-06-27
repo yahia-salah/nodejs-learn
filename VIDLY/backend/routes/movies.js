@@ -8,12 +8,13 @@ const admin = require("../middleware/admin");
 const upload = require("../middleware/multer");
 const validate = require("../middleware/validate");
 const validateObjectId = require("../middleware/validateObjectID");
+const config = require("config");
 
 router.get("/", async (req, res) => {
   const movies = await Movie.find().sort({ title: 1 });
   movies.forEach((movie) => {
     if (movie.thumbnail)
-      movie.thumbnail = "http://localhost:3000/api/uploads/" + movie.thumbnail;
+      movie.thumbnail = config.get("uploads-host") + movie.thumbnail;
   });
   res.send(movies);
 });
@@ -23,7 +24,7 @@ router.get("/:id", validateObjectId, async (req, res) => {
 
   if (movie) {
     if (movie.thumbnail)
-      movie.thumbnail = "http://localhost:3000/api/uploads/" + movie.thumbnail;
+      movie.thumbnail = config.get("uploads-host") + movie.thumbnail;
     res.send(movie);
   } else res.status(404).send("Movie not found!");
 });
@@ -62,7 +63,7 @@ router.put(
     }
 
     await movie.update({ thumbnail: req.file.filename });
-    movie.thumbnail = "http://localhost:3000/api/uploads/" + filename;
+    movie.thumbnail = config.get("uploads-host") + filename;
 
     res.send(movie);
   }
@@ -94,7 +95,7 @@ router.put(
     }
 
     if (movie.thumbnail)
-      movie.thumbnail = "http://localhost:3000/api/uploads/" + movie.thumbnail;
+      movie.thumbnail = config.get("uploads-host") + movie.thumbnail;
 
     res.send(movie);
   }
